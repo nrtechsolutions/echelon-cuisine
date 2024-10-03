@@ -35,16 +35,23 @@ const menuCategories: Record<string, MenuItem[]> = {
       name: 'Vegetable Samosa',
       description: 'Crispy fried dumplings stuffed with potatoes',
       price: '$6.99',
-      image: '/veg_samosa.jpg',
+      image: '/samosa.jpg',
       isHalal: true, // Marking it as Zabia Halal
     },
     {
       name: 'Dahi Kebab',
       description: 'Hung yogurt infused with Indian spices, breaded and deep fried',
       price: '$8.99',
-      image: '/dahi_kebab.jpg',
+      image: '/dahi_kebabs.jpg',
       isHalal: true,
     },
+    {
+        name: 'Juice',
+        description: 'Juice for healthy drinks',
+        price: '$9.99',
+        image: '/juice.jpg',
+        isHalal: true,
+      },
   ],
   'Classic Entrées': [
     {
@@ -57,7 +64,7 @@ const menuCategories: Record<string, MenuItem[]> = {
       name: 'Chicken Majestic',
       description: 'Boneless chicken breast stir-fried with Indian spices',
       price: '$13.99',
-      image: '/chicken_majestic.jpg',
+      image: '/chilli_chicken.jpg',
     },
   ],
   'Amazing Alfredos': [
@@ -65,7 +72,7 @@ const menuCategories: Record<string, MenuItem[]> = {
       name: 'Chicken Alfredo',
       description: 'Creamy alfredo pasta topped with grilled chicken',
       price: '$16.99',
-      image: '/chicken_alfredo.jpg',
+      image: '/tandoori_chicken.jpg',
     },
   ],
   // You can add more categories...

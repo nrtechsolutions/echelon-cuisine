@@ -51,7 +51,10 @@ import {
       },
     ];
   
-    const quickLinks = ["Contact Us", "About"];
+    const quickLinks = [
+      { text: "Contact Us", link: "/contact-us" },
+      { text: "About Us", link: "/about-us" },
+    ];
   
     const businessHours = [
       {
@@ -141,7 +144,9 @@ import {
             <h3 className="mb-4 text-lg font-semibold text-gold">Quick Links</h3>
             <ul className="space-y-4">
               {quickLinks.map((link, index) => (
-                <li key={index}>{link}</li>
+                <li key={index}>
+                  <Link href={link.link}>{link.text}</Link>
+                </li>
               ))}
             </ul>
           </div>

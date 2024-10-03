@@ -21,9 +21,9 @@ export default function Navbar() {
               <Image
                 src="/logo.jpg"
                 alt="Charminar Logo"
-                width={70}
-                height={70}
-                className="h-10 w-auto"
+                width={90}
+                height={90}
+                className="h-14 w-auto"
               />
             </Link>
             <div className="flex flex-col">
