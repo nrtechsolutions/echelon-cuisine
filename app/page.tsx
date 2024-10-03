@@ -135,9 +135,11 @@ export default function Home() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center text-white bg-black bg-opacity-50">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            It&apos;s Not Just Food, It&apos;s an Experience
+            <p>It&rsquo;s not just food, it&rsquo;s an experience.</p>
           </h1>
-
+          <p className="mb-4">
+              Indulge in flavors that transport you to the heart of Hyderabad, where every dish is a masterpiece of tradition and taste.
+            </p>
           <div className="mt-8">
             <Link
               href="/specials"
@@ -169,7 +171,7 @@ export default function Home() {
       {/* Todays Sepcial */}
 
       <section id="specials-section" className="w-full px-8 py-16 bg-gray-100">
-        <h2 className="text-3xl font-bold text-center mb-2">Today's Special</h2>
+        <h2 className="text-3xl font-bold text-center mb-2">Today&rsquo;s Special</h2>
         <div className="border-t border-gray-300 mb-12"></div>
 
         {special && (
