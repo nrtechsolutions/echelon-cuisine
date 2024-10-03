@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
@@ -103,7 +103,7 @@ const specialsData: Record<string, Special> = {
   },
 };
 
-export default function SpecialDetailPage() {
+function SpecialDetailPage() {
   const [specialItem, setSpecialItem] = useState<Special | null>(null);
   const searchParams = useSearchParams();
   const slug = searchParams.get('slug'); // Get the slug from the query params
@@ -181,5 +181,14 @@ export default function SpecialDetailPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+// Wrap the SpecialDetailPage with Suspense
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SpecialDetailPage />
+    </Suspense>
   );
 }
