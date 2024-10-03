@@ -169,7 +169,7 @@ export default function Home() {
       {/* Todays Sepcial */}
 
       <section id="specials-section" className="w-full px-8 py-16 bg-gray-100">
-        <h2 className="text-3xl font-bold text-center mb-2">Today's Special</h2>
+      <h2 className="text-3xl font-bold text-center mb-2">Today&apos;s Special</h2>
         <div className="border-t border-gray-300 mb-12"></div>
 
         {special && (

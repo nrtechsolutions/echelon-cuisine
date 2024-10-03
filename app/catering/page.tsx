@@ -5,7 +5,10 @@ import Link from "next/link";
 
 export default function Catering() {
   return (
-    <div className="w-full pt-16 md:pt-20 px-4 md:px-8" style={{backgroundImage: "url('/biryani_home.jpg')"}}>
+    <div
+      className="w-full pt-16 md:pt-20 px-4 md:px-8"
+      style={{ backgroundImage: "url('/biryani_home.jpg')" }}
+    >
       {/* Catering Header */}
       <div className="text-center mt-8">
         <h1 className="text-4xl font-bold text-gold mb-4">Catering Services</h1>
@@ -15,15 +18,22 @@ export default function Catering() {
       {/* Catering Information Section with Black Background and Hover Effect */}
       <div className="max-w-screen-lg mx-auto p-8 bg-black rounded-lg shadow-lg transition-all duration-300 hover:bg-gray-900 text-center mb-12">
         <p className="text-lg text-gray-300 mb-8">
-          Charminar Indian Restaurant & Catering offers exceptional catering services for all your special occasions. We provide a variety of authentic Indian dishes that will impress your guests and make your event truly unforgettable. Our catering services are perfect for weddings, corporate events, private parties, and more.
+          Charminar Indian Restaurant & Catering offers exceptional catering
+          services for all your special occasions. We provide a variety of
+          authentic Indian dishes that will impress your guests and make your
+          event truly unforgettable. Our catering services are perfect for
+          weddings, corporate events, private parties, and more.
+        </p>
+        <p className="text-lg text-gray-300 mb-8">
+          Whether you&apos;re planning a small gathering or a large celebration,
+          our team is dedicated to delivering fresh, flavorful food with the
+          highest level of service. From appetizers to desserts, we offer
+          customized menus to fit your event&apos;s needs.
         </p>
 
         <p className="text-lg text-gray-300 mb-8">
-          Whether you're planning a small gathering or a large celebration, our team is dedicated to delivering fresh, flavorful food with the highest level of service. From appetizers to desserts, we offer customized menus to fit your event's needs.
-        </p>
-
-        <p className="text-lg text-gray-300 mb-8">
-          Contact us today to learn more about our catering packages and make your next event a delicious success!
+          Contact us today to learn more about our catering packages and make
+          your next event a delicious success!
         </p>
 
         {/* Call-to-Action Buttons */}
@@ -65,9 +75,15 @@ export default function Catering() {
 
       {/* Additional Catering Information */}
       <div className="max-w-screen-lg mx-auto p-8 mb-0 bg-black rounded-lg shadow-lg transition-all duration-300 hover:bg-gray-900 text-center">
-        <h2 className="text-2xl font-semibold text-gold mb-4">Why Choose Us for Your Catering Needs?</h2>
+        <h2 className="text-2xl font-semibold text-gold mb-4">
+          Why Choose Us for Your Catering Needs?
+        </h2>
         <p className="text-lg text-gray-300 mb-8">
-          With years of experience and a passion for authentic Indian cuisine, we provide personalized catering services that suit your event’s unique needs. Whether you’re hosting a large-scale wedding or a small intimate gathering, our team is ready to bring the taste of India to your special occasion.
+          With years of experience and a passion for authentic Indian cuisine,
+          we provide personalized catering services that suit your event’s
+          unique needs. Whether you’re hosting a large-scale wedding or a small
+          intimate gathering, our team is ready to bring the taste of India to
+          your special occasion.
         </p>
       </div>
     </div>
