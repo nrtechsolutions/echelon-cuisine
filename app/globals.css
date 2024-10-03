@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/autoplay';
+
+:root {
+  --foreground-rgb: 0, 0, 0; /* Black text color */
+  --background-start-rgb: 255, 255, 255; /* White background */
+  --background-end-rgb: 255, 255, 255;   /* White background */
+}
+
+/* Apply styles for the body */
+body {
+  color: rgb(var(--foreground-rgb)); 
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Swiper container and slide styles */
+.mySwiper {
+  @apply bg-white; /* Apply white background to the Swiper container */
+}
+
+.mySwiper .swiper-slide {
+  @apply bg-white; /* Apply white background to each Swiper slide */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
