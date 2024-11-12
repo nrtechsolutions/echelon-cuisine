@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
 // Menu item type definition
@@ -9,7 +10,7 @@ type MenuItem = {
   description: string;
   price: string;
   image: string;
-  isHalal?: boolean; // Whether it's Zabia Halal certified
+  isHalal?: boolean;
 };
 
 // Define menu categories and items
@@ -20,7 +21,7 @@ const menuCategories: Record<string, MenuItem[]> = {
       description: 'Aromatic basmati rice cooked with spices and fresh vegetables.',
       price: '$19.99',
       image: '/veg_biryani.jpg',
-      isHalal: true, // Marking it as Zabia Halal
+      isHalal: true,
     },
     {
       name: 'Afghan Chicken',
@@ -36,7 +37,7 @@ const menuCategories: Record<string, MenuItem[]> = {
       description: 'Crispy fried dumplings stuffed with potatoes',
       price: '$6.99',
       image: '/samosa.jpg',
-      isHalal: true, // Marking it as Zabia Halal
+      isHalal: true,
     },
     {
       name: 'Dahi Kebab',
@@ -46,12 +47,12 @@ const menuCategories: Record<string, MenuItem[]> = {
       isHalal: true,
     },
     {
-        name: 'Juice',
-        description: 'Juice for healthy drinks',
-        price: '$9.99',
-        image: '/juice.jpg',
-        isHalal: true,
-      },
+      name: 'Juice',
+      description: 'Juice for healthy drinks',
+      price: '$9.99',
+      image: '/juice.jpg',
+      isHalal: true,
+    },
   ],
   'Classic Entrées': [
     {
@@ -75,13 +76,25 @@ const menuCategories: Record<string, MenuItem[]> = {
       image: '/tandoori_chicken.jpg',
     },
   ],
-  // You can add more categories...
+  // Additional categories...
 };
 
 export default function MenuPage() {
+  const searchParams = useSearchParams();
+  const product = searchParams.get('product');
+
+  // Set initial category based on product or fallback to default
   const [selectedCategory, setSelectedCategory] = useState('Family-Style Meals');
 
-  // Handle tab click
+  useEffect(() => {
+    if (product === 'CharminarSD') {
+      setSelectedCategory('Family-Style Meals');
+    } else if (product === 'CharminarExpress') {
+      setSelectedCategory('Appetizers');
+    }
+  }, [product]);
+
+  // Handle tab click to switch categories
   const handleTabClick = (category: string) => {
     setSelectedCategory(category);
   };

@@ -145,7 +145,7 @@ import {
             <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <Link href={link.link}>{link.text}</Link>
+                  <Link href={link.link} className="transition-colors duration-300 hover:text-gold">{link.text}</Link>
                 </li>
               ))}
             </ul>

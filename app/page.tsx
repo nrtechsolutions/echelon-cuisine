@@ -166,58 +166,114 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Todays Sepcial */}
-
-      <section id="specials-section" className="w-full px-8 py-16 bg-gray-100">
-      <h2 className="text-3xl font-bold text-center mb-2">Today&apos;s Special</h2>
-        <div className="border-t border-gray-300 mb-12"></div>
-
-        {special && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {special.images.map((image, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-black hover:text-gold cursor-pointer"
+      <section
+        className="w-full px-8 py-16 bg-cover bg-center text-white"
+        style={{ backgroundImage: 'url("/AI_1.webp")' }} // Replace with actual path
+      >
+        {/* Products Section */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gold mb-4 bg-black bg-opacity-60 inline-block px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
+            Our Products
+          </h2>
+          <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}
+          {/* Divider */}
+          <div className="flex flex-col md:flex-row justify-center gap-8">
+            <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
+              <Image
+                src="/about_us.jpeg" // Replace with actual image path
+                alt="CharminarSD"
+                width={400}
+                height={250}
+                className="rounded-lg"
+              />
+              <h3 className="text-2xl font-bold text-gold mt-4">CharminarSD</h3>
+              <p className="text-gray-300 mt-2">
+                Discover the authentic flavors at CharminarSD.
+              </p>
+              <Link
+                href={{
+                  pathname: "/menu",
+                  query: { product: "CharminarSD" }, // or "CharminarExpress"
+                }}
+                className="mt-6 inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
               >
-                {/* Display each image with its own block */}
-                <Image
-                  src={image.src}
-                  alt={image.description}
-                  width={400}
-                  height={250}
-                  className="rounded-lg"
-                />
-                <h3 className="text-2xl font-bold mt-4">{special.title}</h3>
-                <p className="text-center mt-2">{special.description}</p>
-                <p className="text-center text-lg font-semibold mt-4">
-                  {image.description}
-                </p>
-                <p className="text-center text-lg font-semibold mt-4">
-                  {special.price}
-                </p>
-
-                {/* Button that redirects to the dynamic special page */}
-                <button
-                  className="mt-6 bg-yellow-400 text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
-                  onClick={() => router.push(`/specials?slug=${special.slug}`)} // Construct URL manually
-                >
-                  {special.buttonText}
-                </button>
-              </div>
-            ))}
+                View Menu
+              </Link>
+            </div>
+            <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
+              <Image
+                src="/about_us.jpeg" // Replace with actual image path
+                alt="Charminar Express"
+                width={400}
+                height={250}
+                className="rounded-lg"
+              />
+              <h3 className="text-2xl font-bold text-gold mt-4">
+                Charminar Express
+              </h3>
+              <p className="text-gray-300 mt-2">
+                Quick bites with the same great taste at Charminar Express.
+              </p>
+              <Link
+                href={{
+                  pathname: "/menu",
+                  query: { product: "CharminarExpress" }, // or "CharminarExpress"
+                }}
+                className="mt-6 inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
+              >
+                View Menu
+              </Link>
+            </div>
           </div>
-        )}
-      </section>
+        </div>
 
-      {/* Menu Section */}
-
-      {/* Testimonial Slider */}
-      <section className="w-full px-8 py-16 bg-gray-100">
-        <h2 className="text-3xl font-bold text-center mb-8">
-          What Our Customers Say
-        </h2>
-        <div className="relative w-full">
-          <TestimonialSlider />
+        {/* Today's Special Section */}
+        <div id="specials-section" className="text-center mt-16 mb-0">
+          {" "}
+          {/* Added mt-16 for separation */}
+          <h2 className="text-3xl font-bold text-gold mb-2 bg-black bg-opacity-60 inline-block px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
+            Today&apos;s Special
+          </h2>
+          <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}
+          {/* Divider */}
+          {special && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {special.images.map((image, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center p-6 bg-black bg-opacity-90 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-900 cursor-pointer"
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.description}
+                    width={400}
+                    height={250}
+                    className="rounded-lg"
+                  />
+                  <h3 className="text-2xl font-bold mt-4 text-gold">
+                    {special.title}
+                  </h3>
+                  <p className="text-center mt-2 text-gray-300">
+                    {special.description}
+                  </p>
+                  <p className="text-center text-lg font-semibold mt-4 text-gray-300">
+                    {image.description}
+                  </p>
+                  <p className="text-center text-lg font-semibold mt-4 text-gold">
+                    {special.price}
+                  </p>
+                  <button
+                    className="mt-6 bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
+                    onClick={() =>
+                      router.push(`/specials?slug=${special.slug}`)
+                    }
+                  >
+                    {special.buttonText}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </main>
