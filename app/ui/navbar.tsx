@@ -55,6 +55,9 @@ export default function Navbar() {
             >
               Catering
             </Link>
+            <Link href="/location" className="hover:text-gold transition-colors duration-300">
+              Locate Us
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -103,6 +106,9 @@ export default function Navbar() {
                 className="hover:text-gold transition-colors duration-300"
               >
                 Catering
+              </Link>
+              <Link href="/location" className="hover:text-gold transition-colors duration-300">
+                Location
               </Link>
             </div>
           </div>
