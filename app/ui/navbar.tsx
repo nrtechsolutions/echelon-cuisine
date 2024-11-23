@@ -19,7 +19,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             <Link href="/">
               <Image
-                src="/logo.jpg"
+                src="/charminar_logo.png"
                 alt="Charminar Logo"
                 width={90}
                 height={90}
@@ -31,7 +31,7 @@ export default function Navbar() {
               <div className="text-xs font-medium text-gold">
                 Indian Restaurant & Catering
               </div>
-              <div className="text-xs font-light text-gold">San Diego, CA.</div>
+              {/* <div className="text-xs font-light text-gold">San Diego, CA.</div> */}
             </div>
           </div>
 

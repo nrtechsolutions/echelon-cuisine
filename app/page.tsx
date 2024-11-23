@@ -80,8 +80,8 @@ const specialsData: Record<string, Special> = {
     description: "Try our Tandoori Chicken and Butter Paneer specials.",
     price: "$14.99",
     images: [
-      { src: "/tandoori_chicken.jpg", description: "Tandoori Chicken" },
-      { src: "/butter_panner.jpg", description: "Creamy Butter Paneer" },
+      { src: "/veg/dkc.jpg", description: "Tandoori Chicken" },
+      { src: "/veg/PANEER_BUTTER_MASALA.jpg", description: "Creamy Butter Paneer" },
     ],
     buttonText: "Order Now",
   },
@@ -120,7 +120,7 @@ export default function Home() {
   // Continue rendering even if there's no special for today
   // Render empty state or simply continue with other content
   return (
-    <main className="flex flex-1 flex-col items-center justify-center pt-[4rem] pb-8">
+    <main className="flex flex-1 flex-col items-center justify-center pt-[4rem] pb-0">
       {/* Background Section */}
       <div className="relative w-full h-[579px]">
         <video
@@ -168,11 +168,11 @@ export default function Home() {
 
       <section
         className="w-full px-8 py-16 bg-cover bg-center text-white"
-        style={{ backgroundImage: 'url("/AI_1.webp")' }} // Replace with actual path
+        style={{ backgroundImage: 'url("/products_section.jpg")' }}
       >
         {/* Products Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gold mb-4 bg-black bg-opacity-60 inline-block px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
+          <h2 className="text-3xl font-bold text-gold mb-4  bg-opacity-60 px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
             Our Products
           </h2>
           <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}
@@ -231,7 +231,7 @@ export default function Home() {
         <div id="specials-section" className="text-center mt-16 mb-0">
           {" "}
           {/* Added mt-16 for separation */}
-          <h2 className="text-3xl font-bold text-gold mb-2 bg-black bg-opacity-60 inline-block px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
+          <h2 className="text-3xl font-bold text-gold mb-2  bg-opacity-60  px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
             Today&apos;s Special
           </h2>
           <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}

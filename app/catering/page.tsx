@@ -38,7 +38,7 @@ export default function Catering() {
 
         {/* Call-to-Action Buttons */}
         <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-          <Link href="/menu">
+          <Link href="/catering-menu">
             <span className="bg-gold text-black px-6 py-3 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white transition duration-300 cursor-pointer">
               View Catering Menu
             </span>
