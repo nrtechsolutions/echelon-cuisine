@@ -28,19 +28,19 @@ export default function LocationPage() {
     {
       name: "Charminar Orange County",
       coordinates: { lat: 33.6114, lng: -117.7147 },
-      image: "/logo.jpg",
+      image: "/charminar_logo.png",
       address: "24371 El Toro Rd # D, Laguna Woods, CA 92637",
     },
     {
       name: "Charminar Sandiego",
       coordinates: { lat: 32.9072, lng: -117.1910 },
-      image: "/logo.jpg",
+      image: "/charminar_logo.png",
       address: "6755 Mira Mesa Blvd Ste 111, San Diego, CA 92121",
     },
     {
       name: "Charminar Express Sunnyvale",
       coordinates: { lat: 37.3781, lng: -122.0311 },
-      image: "/logo.jpg",
+      image: "/charminar_logo.png",
       address: "1191 E Arques, Sunnyvale, CA 94085",
     },
   ];

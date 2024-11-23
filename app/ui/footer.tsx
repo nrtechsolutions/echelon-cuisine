@@ -81,7 +81,7 @@ import {
             <h2 className="text-3xl font-bold">
               <Link href="/">
                 <Image
-                  src="/logo.jpg"
+                  src="/charminar_logo.png"
                   alt="Charminar Logo"
                   width={70}
                   height={70}
