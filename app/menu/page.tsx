@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
@@ -100,6 +100,7 @@ export default function MenuPage() {
   };
 
   return (
+    <Suspense fallback={<div>Loading menu...</div>}>
     <div className="bg-gray-100 min-h-screen p-8 mt-6">
       {/* Tab Navigation */}
       <nav className="flex justify-center space-x-6 border-b-2 border-gray-300 mb-8">
@@ -151,5 +152,6 @@ export default function MenuPage() {
         </a>
       </div>
     </div>
+    </Suspense>
   );
 }
