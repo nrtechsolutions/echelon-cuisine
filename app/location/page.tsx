@@ -14,7 +14,7 @@ type Suggestion = {
 type PredefinedLocation = {
   name: string;
   coordinates: { lat: number; lng: number };
-  image: string;
+  image?: string; // Optional image for fallback
   address: string;
 };
 
@@ -26,22 +26,22 @@ export default function LocationPage() {
 
   const predefinedLocations: PredefinedLocation[] = [
     {
-      name: "Charminar SD",
+      name: "Charminar Orange County",
+      coordinates: { lat: 33.6114, lng: -117.7147 },
+      image: "/logo.jpg",
+      address: "24371 El Toro Rd # D, Laguna Woods, CA 92637",
+    },
+    {
+      name: "Charminar Sandiego",
       coordinates: { lat: 32.9072, lng: -117.1910 },
-      image: "/charminar_sd.jpg",
-      address: "6755 Mira Mesa Blvd, San Diego, CA 92121",
+      image: "/logo.jpg",
+      address: "6755 Mira Mesa Blvd Ste 111, San Diego, CA 92121",
     },
     {
-      name: "Charminar Express",
-      coordinates: { lat: 32.7157, lng: -117.1611 },
-      image: "/charminar_express.jpg",
-      address: "Downtown San Diego, CA 92101",
-    },
-    {
-      name: "Charminar North",
-      coordinates: { lat: 32.9022, lng: -117.2043 },
-      image: "/charminar_north.jpg",
-      address: "1234 North Ave, San Diego, CA 92123",
+      name: "Charminar Express Sunnyvale",
+      coordinates: { lat: 37.3781, lng: -122.0311 },
+      image: "/logo.jpg",
+      address: "1191 E Arques, Sunnyvale, CA 94085",
     },
   ];
 
@@ -52,13 +52,18 @@ export default function LocationPage() {
     }
 
     const fetchSuggestions = async () => {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
-          searchQuery
-        )}&key=${GOOGLE_MAPS_API_KEY}`
-      );
-      const data = await response.json();
-      setSuggestions(data.predictions || []);
+      try {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${encodeURIComponent(
+            searchQuery
+          )}&key=${GOOGLE_MAPS_API_KEY}`
+        );
+        const data = await response.json();
+        setSuggestions(data.predictions || []);
+      } catch (error) {
+        setError("Failed to fetch location suggestions.");
+        console.error(error);
+      }
     };
 
     fetchSuggestions();
@@ -90,18 +95,18 @@ export default function LocationPage() {
     <div
       className="flex flex-col md:flex-row min-h-screen max-w-screen-xl mx-auto p-6 bg-cover bg-center relative gap-6"
       style={{
-        backgroundImage: 'url("/location_track.webp")', // Replace with your desired background image
+        backgroundImage: 'url("/Charminar_Product_Shoot/DSC03382.jpg")', // Background image
       }}
     >
-      {/* Background Overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
 
-      {/* Left Section: Location Search and Predefined Locations */}
+      {/* Left Section */}
       <div className="relative z-10 flex flex-1 flex-col text-white">
         <h2 className="text-3xl font-bold mb-4 text-gold">Find Our Location</h2>
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-500 mb-4">{error}</p>}
 
-        {/* Location Search Input */}
+        {/* Search Box */}
         <input
           type="text"
           value={searchQuery}
@@ -110,7 +115,7 @@ export default function LocationPage() {
           className="w-full p-3 mb-4 rounded border border-gray-300 bg-black bg-opacity-70 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500"
         />
 
-        {/* Suggestions List */}
+        {/* Suggestions */}
         {suggestions.length > 0 && (
           <ul className="border border-gray-300 rounded shadow-lg max-h-40 overflow-y-auto bg-black bg-opacity-80 text-white">
             {suggestions.map((suggestion) => (
@@ -136,7 +141,7 @@ export default function LocationPage() {
                 onClick={() => handlePredefinedLocationClick(location.coordinates)}
               >
                 <Image
-                  src={location.image}
+                  src={location.image || "/default-logo.jpg"} // Fallback image
                   alt={location.name}
                   width={60}
                   height={60}
@@ -152,7 +157,7 @@ export default function LocationPage() {
         </div>
       </div>
 
-      {/* Right Section: Map with Top Margin */}
+      {/* Right Section: Map */}
       <div className="relative z-10 flex-1 h-[500px] mt-6 md:mt-10 md:ml-6 border-2 border-gold rounded-lg overflow-hidden shadow-lg">
         <iframe
           width="100%"
