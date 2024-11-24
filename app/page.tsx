@@ -186,9 +186,9 @@ export default function Home() {
                 height={250}
                 className="rounded-lg"
               />
-              <h3 className="text-2xl font-bold text-gold mt-4">CharminarSD</h3>
+              <h3 className="text-2xl font-bold text-gold mt-4">Charminar</h3>
               <p className="text-gray-300 mt-2">
-                Discover the authentic flavors at CharminarSD.
+                A Dining Experience Like No Other!
               </p>
               <Link
                 href={{
@@ -232,7 +232,7 @@ export default function Home() {
           {" "}
           {/* Added mt-16 for separation */}
           <h2 className="text-3xl font-bold text-gold mb-2  bg-opacity-60  px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
-            Today&apos;s Special
+            Weekend&apos;s Special
           </h2>
           <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}
           {/* Divider */}
