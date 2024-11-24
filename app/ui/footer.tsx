@@ -47,7 +47,7 @@ import {
       },
       {
         icon: <FaMapMarkerAlt className="mr-2 inline-block text-gold" />,
-        text: "6755 Mira Mesa Blvd 113, San Diego, CA 92121",
+        text: "6755 Mira Mesa Blvd Ste 111, San Diego, CA 92121",
       },
     ];
   
@@ -83,18 +83,16 @@ import {
                 <Image
                   src="/charminar_logo.png"
                   alt="Charminar Logo"
-                  width={70}
-                  height={70}
-                  className="h-10 w-auto"
+                  width={100}
+                  height={100}
+                  className="h-20 w-auto"
                 />
               </Link>
             </h2>
             <div className="mt-4">
-              <h3 className="mb-4 text-lg font-semibold text-gold">
+              <h3 className="mb-4 text-2xl font-semibold text-gold">
                 Charminar Indian Restaurant & Catering
               </h3>
-              <p className="text-base">6755 Mira Mesa Blvd 113</p>
-              <p className="text-base">San Diego, CA 92121</p>
             </div>
           </div>
   
