@@ -59,7 +59,7 @@ const menuCategories: Record<string, MenuItem[]> = {
       isHalal: false,
     }
   ],
-  "Non-Vegetarian Starters": [
+ "Non-Vegetarian Starters": [
       {
         name: "Kodi Vepudu Boneless",
         description: "Boneless chicken thigh stir-fried in special In-house sauce",
@@ -109,8 +109,9 @@ const menuCategories: Record<string, MenuItem[]> = {
         image: "/veg/APOLLO FISH-01.jpg",
         isHalal: true,
       }
-  ],
-   "Tandoor Kebabs": [
+    ],
+   "Tandoor Kebabs":
+   [
         {
           name: "Tandoori Chicken",
           description: "Two grilled chicken leg-quarters marinated in a spicy yogurt sauce",
@@ -452,16 +453,138 @@ const menuCategories: Record<string, MenuItem[]> = {
       }
   ],
   "Rice & Sides": [
-
+      {
+        name: "Biryani Flavour Rice",
+        description: "",
+        price: "$6.99",
+        image: "/charminar_logo.png",
+        isHalal: true
+      },
+      {
+        name: "Jeera Rice",
+        description: "",
+        price: "$6.99",
+        image: "/veg/Jerra  rice.jpg",
+        isHalal: true
+      },
+      {
+        name: "Basmati Rice",
+        description: "",
+        price: "$1.99",
+        image: "/veg/basamati rice  rice.jpg",
+        isHalal: true
+      },
+      {
+        name: "Cucumber Raita",
+        description: "",
+        price: "$1.49",
+        image: "/veg/raita.jpg",
+        isHalal: true
+      },
+      {
+        name: "Indian Pickle",
+        description: "",
+        price: "$1.49",
+        image: "/charminar_logo.png",
+        isHalal: true
+      },
+      {
+        name: "Mirchi Ka Salan",
+        description: "",
+        price: "$1.49",
+        image: "/charminar_logo.png",
+        isHalal: true
+      }
   ],
   "Desserts": [
-
+        {
+          "name": "Paan Laddu (2pcs)",
+          "description": "Laddu made from paan chutney, Gulkant, Funnel seeds, Coconut & Condensed milk.",
+          "price": "$4.99",
+          "image": "/charminar_logo.png",
+          "isHalal": true
+        },
+        {
+          "name": "Gulab Jamun (4 Pcs)",
+          "description": "Deep-fried milk-based balls drenched in a sweet sugary syrup.",
+          "price": "$5.99",
+          "image": "/charminar_logo.png",
+          "isHalal": true
+        },
+        {
+          "name": "Ras Malai (4 Pcs)",
+          "description": "Rasmalai is cottage cheese balls soaked in thickened, sweetened and flavored milk.",
+          "price": "$6.99",
+          "image": "/veg/RAS_MALAI-01.jpg",
+          "isHalal": true
+        },
+        {
+          "name": "Shahi Tukda (4 Pcs)",
+          "description": "Ghee-fried pieces of bread cooked in a bath of sugary, milk-based rabdi infused with cardamom and nuts.",
+          "price": "$7.99",
+          "image": "/charminar_logo.png",
+          "isHalal": true
+        },
+        {
+          "name": "Jamun Ka Ghosla",
+          "description": "A decadent dessert, made with authentic Hyderabadi pheni and scrumptious gulab jamun, delicious rabdi, topped with cardamom powder and nuts.",
+          "price": "$7.99",
+          "image": "/charminar_logo.png",
+          "isHalal": true
+        }
   ],
   "Beverages": [
-
+      {
+        name: "Mango Lassi",
+        description: "",
+        price: "$3.99",
+        image: "/veg/MANGO LASSI-01.jpg",
+        isHalal: true
+      },
+      {
+        name: "Bottled Water",
+        description: "",
+        price: "$1.49",
+        image: "/charminar_logo.png",
+        isHalal: true
+      },
+      {
+        name: "Charminar ki Chai",
+        description: "",
+        price: "$2.99",
+        image: "/charminar_logo.png",
+        isHalal: true
+      },
+      {
+        name: "Soda",
+        description: "",
+        price: "$2.99",
+        image: "/veg/SODA-01.jpg",
+        isHalal: true
+      },
+      {
+        name: "Thums up",
+        description: "",
+        price: "$3.99",
+        image: "/veg/thums_up-01.jpg",
+        isHalal: true
+      },
+      {
+        name: "Limca",
+        description: "",
+        price: "$3.99",
+        image: "/veg/LIMCA-01.jpg",
+        isHalal: true
+      }
   ],
-  "Family Feast": [
-
+  "Feast": [
+      {
+        name: "Family Feast",
+        description: "Serves 4 to 5 people. Includes choice of family pack biryani + choice of Entree + choice of appetizer + classic naan (2 pcs) + 1 dessert + 2 drinks. Additional charges applied on certain items",
+        price: "$64.99",
+        image: "/charminar_logo.png",
+        isHalal: true
+      }
   ],
 // Additional categories...
 };
