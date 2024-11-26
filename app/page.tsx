@@ -180,7 +180,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-center gap-8">
             <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
               <Image
-                src="/about_us.jpeg" // Replace with actual image path
+                src="/charminar_logo.png" // Replace with actual image path
                 alt="CharminarSD"
                 width={400}
                 height={250}
@@ -202,7 +202,7 @@ export default function Home() {
             </div>
             <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
               <Image
-                src="/about_us.jpeg" // Replace with actual image path
+                src="/charminar_express_logo.jpg" // Replace with actual image path
                 alt="Charminar Express"
                 width={400}
                 height={250}
