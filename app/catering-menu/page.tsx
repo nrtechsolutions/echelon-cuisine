@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type MenuItem = {
   name: string;
@@ -732,88 +732,127 @@ const CateringMenu: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>(
     "Vegetarian Starters"
   );
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  // Close sidebar if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setSidebarOpen(false); // Close the sidebar
+      }
+    };
+
+    if (sidebarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebarOpen]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {/* Top Navbar */}
-      <header className="bg-black bg-opacity-75 text-gold p-4">
-        <h1 className="text-2xl font-bold text-center">Catering Menu</h1>
-      </header>
+    {/* Top Navbar */}
+    <header className="bg-black bg-opacity-75 text-gold p-4">
+      <h1 className="text-2xl font-bold text-center">Catering Menu</h1>
+    </header>
 
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-1/4 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800 bg-opacity-75 p-4 rounded-tr-lg shadow-lg">
-          <ul className="space-y-2">
-            {categories.map((category) => (
-              <li
-                key={category}
-                className={`p-3 rounded-md cursor-pointer transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-gold text-black shadow-md scale-105"
-                    : "hover:bg-gray-700 hover:scale-105"
-                }`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        {/* Main Content */}
-        <main
-          className="flex-1 relative p-6 rounded-l-lg shadow-lg"
-          style={{
-            backgroundImage: `url(${
-              categoryImages[selectedCategory] || defaultImage
-            })`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+    <div className="flex flex-col lg:flex-row">
+      {/* Toggle Button for Sidebar on Mobile */}
+      <div className="lg:hidden bg-black p-4">
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="bg-yellow-500 text-black px-4 py-2 rounded-lg w-full focus:outline-none"
         >
-          {/* Dark overlay for better readability */}
-          <div className="absolute inset-0 bg-black bg-opacity-50 rounded-l-lg"></div>
-
-          <div className="relative z-10">
-            {/* Display Category Name */}
-            <h2 className="text-4xl font-bold mb-6 text-center">
-              {selectedCategory}
-            </h2>
-
-            {/* Table for Menu Items */}
-            <div className="overflow-x-auto bg-gray-800 bg-opacity-90 rounded-lg p-4 shadow-lg">
-              <table className="w-full text-left table-auto border-collapse">
-                <thead>
-                  <tr className="bg-gray-900 text-gold border-b border-gray-600">
-                    <th className="p-2">Dish Name</th>
-                    <th className="p-2">Qty</th>
-                    <th className="p-2">Pcs</th>
-                    <th className="p-2">Qtr Tray</th>
-                    <th className="p-2">Half Tray</th>
-                    <th className="p-2">Full Tray</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {menuData[selectedCategory]?.map((item, index) => (
-                    <tr
-                      key={index}
-                      className="border-b border-gray-700 hover:bg-gray-700"
-                    >
-                      <td className="p-2">{item.name}</td>
-                      <td className="p-2">{item.qty}</td>
-                      <td className="p-2">{item.pcs}</td>
-                      <td className="p-2">{item.qtrTray}</td>
-                      <td className="p-2">{item.halfTray}</td>
-                      <td className="p-2">{item.fullTray}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </main>
+          {sidebarOpen ? "Hide Categories" : "Show Categories"}
+        </button>
       </div>
+
+      {/* Sidebar */}
+      <aside
+        ref={sidebarRef}
+        className={`fixed lg:static top-0 left-0 w-3/4 max-w-xs lg:w-1/4 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800 bg-opacity-75 p-4 rounded-tr-lg shadow-lg z-50 transition-transform transform ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0`}
+      >
+        <ul className="space-y-2">
+          {categories.map((category) => (
+            <li
+              key={category}
+              className={`p-3 rounded-md cursor-pointer transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-gold text-black shadow-md scale-105"
+                  : "hover:bg-gray-700 hover:scale-105"
+              }`}
+              onClick={() => {
+                setSelectedCategory(category);
+                setSidebarOpen(false); // Close sidebar after selection
+              }}
+            >
+              {category}
+            </li>
+          ))}
+        </ul>
+      </aside>
+
+      {/* Main Content */}
+      <main
+        className="flex-1 relative p-6 rounded-l-lg shadow-lg"
+        style={{
+          backgroundImage: `url(${
+            categoryImages[selectedCategory] || defaultImage
+          })`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Dark overlay for better readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-50 rounded-l-lg"></div>
+
+        <div className="relative z-10">
+          {/* Display Category Name */}
+          <h2 className="text-4xl font-bold mb-6 text-center">
+            {selectedCategory}
+          </h2>
+
+          {/* Table for Menu Items */}
+          <div className="overflow-x-auto bg-gray-800 bg-opacity-90 rounded-lg p-4 shadow-lg">
+            <table className="w-full text-left table-auto border-collapse">
+              <thead>
+                <tr className="bg-gray-900 text-gold border-b border-gray-600">
+                  <th className="p-2">Dish Name</th>
+                  <th className="p-2">Qty</th>
+                  <th className="p-2">Pcs</th>
+                  <th className="p-2">Qtr Tray</th>
+                  <th className="p-2">Half Tray</th>
+                  <th className="p-2">Full Tray</th>
+                </tr>
+              </thead>
+              <tbody>
+                {menuData[selectedCategory]?.map((item, index) => (
+                  <tr
+                    key={index}
+                    className="border-b border-gray-700 hover:bg-gray-700"
+                  >
+                    <td className="p-2">{item.name}</td>
+                    <td className="p-2">{item.qty}</td>
+                    <td className="p-2">{item.pcs}</td>
+                    <td className="p-2">{item.qtrTray}</td>
+                    <td className="p-2">{item.halfTray}</td>
+                    <td className="p-2">{item.fullTray}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
     </div>
+  </div>
   );
 };
 

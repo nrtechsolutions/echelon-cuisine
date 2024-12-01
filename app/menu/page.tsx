@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
@@ -651,6 +651,7 @@ export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState(
     "Vegetarian Starters"
   );
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -663,66 +664,110 @@ export default function MenuPage() {
     }
   }, []);
 
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
+  // Close sidebar if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setIsSidebarOpen(false); // Close the sidebar
+      }
+    };
+
+    if (isSidebarOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isSidebarOpen]);
+
   const handleTabClick = (category: string) => {
     setSelectedCategory(category);
+    setIsSidebarOpen(false); // Close the sidebar after selecting a category
   };
-  
-  return (
-    <div className="bg-black min-h-screen px-4 py-12 flex flex-col lg:flex-row space-x-6">
-      {/* Sidebar Navigation */}
-      <aside className="w-full lg:w-1/4 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800 bg-opacity-75 p-4 rounded-tr-lg shadow-lg text-white">
-        <h2 className="text-xl font-bold mb-4 text-yellow-500">
-          Menu Categories
-        </h2>
-        <nav className="space-y-4">
-          {Object.keys(menuCategories).map((category) => (
-            <button
-              key={category}
-              onClick={() => handleTabClick(category)}
-              className={`block text-left text-lg  w-full px-4 py-2 rounded-lg ${
-                selectedCategory === category
-                  ? "bg-yellow-500 text-white"
-                  : "text-white hover:bg-yellow-500 hover:text-black"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </nav>
-      </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 bg-black text-white">
-        <h1 className="text-2xl lg:text-3xl  text-yellow-500 mb-6 py-3">
-          {selectedCategory}
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-          {menuCategories[selectedCategory].map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 hover:bg-black hover:text-yellow-500"
-            >
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={500}
-                height={300}
-                className="rounded-lg"
-              />
-              <h4 className="text-xl lg:text-2xl font-bold mt-4">
-                {item.name}
-              </h4>
-              <p className="mt-2 text-gray-700">{item.description}</p>
-              <p className="mt-4 text-lg font-semibold">{item.price}</p>
-              {item.isHalal && (
-                <span className="block mt-2 text-green-500 font-bold">
-                  Zabia Halal
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-      </main>
+  return (
+    <div className="bg-black min-h-screen px-4 py-12">
+      {/* Inline "Show Categories" Button */}
+      <div className="lg:hidden fixed top-[64px] left-0 w-full z-50">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="bg-yellow-500 text-black px-4 py-2 rounded-lg focus:outline-none w-full text-center"
+        >
+          {isSidebarOpen ? "Close Categories" : "Show Categories"}
+        </button>
+      </div>
+
+      {/* Content Layout */}
+      <div className="flex flex-col lg:flex-row lg:space-x-6">
+        {/* Sidebar Navigation */}
+        <aside
+          ref={sidebarRef}
+          className={`fixed lg:static top-0 left-0 w-3/4 max-w-xs lg:w-1/4 bg-gradient-to-b from-gray-800 via-gray-900 to-gray-800 bg-opacity-75 p-4 rounded-tr-lg shadow-lg text-white z-50 transition-transform transform ${
+            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+          } lg:translate-x-0 lg:overflow-y-auto`}
+        >
+          <h2 className="text-xl font-bold mb-4 text-yellow-500">
+            Menu Categories
+          </h2>
+          <nav className="space-y-4">
+            {Object.keys(menuCategories).map((category) => (
+              <button
+                key={category}
+                onClick={() => handleTabClick(category)}
+                className={`block text-left text-lg w-full px-4 py-2 rounded-lg ${
+                  selectedCategory === category
+                    ? "bg-yellow-500 text-black"
+                    : "text-white hover:bg-yellow-500 hover:text-black"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </nav>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 bg-black text-white px-4 py-8">
+          <h1 className="text-2xl lg:text-3xl text-yellow-500 mb-6 py-3">
+            {selectedCategory}
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            {menuCategories[selectedCategory]?.map(
+              (item: any, index: number) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-lg p-4 transition-transform transform hover:scale-105 hover:bg-black hover:text-yellow-500"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    layout="responsive"
+                    width={16} // Aspect ratio width
+                    height={9} // Aspect ratio height
+                    className="rounded-lg"
+                  />
+                  <h4 className="text-xl lg:text-2xl font-bold mt-4">
+                    {item.name}
+                  </h4>
+                  <p className="mt-2 text-gray-700">{item.description}</p>
+                  <p className="mt-4 text-lg font-semibold">{item.price}</p>
+                  {item.isHalal && (
+                    <span className="block mt-2 text-green-500 font-bold">
+                      Zabia Halal
+                    </span>
+                  )}
+                </div>
+              )
+            )}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

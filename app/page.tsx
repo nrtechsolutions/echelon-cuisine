@@ -81,7 +81,10 @@ const specialsData: Record<string, Special> = {
     price: "$14.99",
     images: [
       { src: "/veg/dkc.jpg", description: "Tandoori Chicken" },
-      { src: "/veg/PANEER_BUTTER_MASALA.jpg", description: "Creamy Butter Paneer" },
+      {
+        src: "/veg/PANEER_BUTTER_MASALA.jpg",
+        description: "Creamy Butter Paneer",
+      },
     ],
     buttonText: "Order Now",
   },
@@ -172,57 +175,66 @@ export default function Home() {
       >
         {/* Products Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gold mb-4  bg-opacity-60 px-6 py-3 rounded-md shadow-lg hover:bg-opacity-80 transition-all duration-300">
-            Our Products
-          </h2>
-          <div className="border-t border-gold w-24 mx-auto mb-8"></div>{" "}
-          {/* Divider */}
-          <div className="flex flex-col md:flex-row justify-center gap-8">
+          <h2 className="text-3xl font-bold text-gold mb-4">Our Products</h2>
+          <div className="border-t border-gold w-24 mx-auto mb-8"></div>
+
+          <div className="flex flex-col gap-4 md:flex-row md:gap-8 justify-center">
+            {/* Card 1 */}
             <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
-              <Image
-                src="/charminar_logo.png" // Replace with actual image path
-                alt="CharminarSD"
-                width={400}
-                height={250}
-                className="rounded-lg"
-              />
+              <div className="flex justify-center items-center h-60">
+                <Image
+                  src="/charminar_logo.png"
+                  alt="Charminar Dining Experience"
+                  width={400}
+                  height={250}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h3 className="text-2xl font-bold text-gold mt-4">Charminar</h3>
               <p className="text-gray-300 mt-2">
-                A Dining Experience Like No Other!
+                Enjoy an unmatched dining experience at Charminar.
               </p>
-              <Link
-                href={{
-                  pathname: "/menu",
-                  query: { product: "CharminarSD" }, // or "CharminarExpress"
-                }}
-                className="mt-6 inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
-              >
-                View Menu
-              </Link>
+              <div className="mt-6">
+                <Link
+                  href={{
+                    pathname: "/menu",
+                    query: { product: "CharminarSD" },
+                  }}
+                  className="inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
+                >
+                  View Menu
+                </Link>
+              </div>
             </div>
+
+            {/* Card 2 */}
             <div className="bg-black bg-opacity-90 rounded-lg shadow-lg p-6 text-center transition-transform transform hover:scale-105 hover:bg-gray-900">
-              <Image
-                src="/charminar_express_logo.jpg" // Replace with actual image path
-                alt="Charminar Express"
-                width={400}
-                height={250}
-                className="rounded-lg"
-              />
+              <div className="flex justify-center items-center h-60">
+                <Image
+                  src="/charminar_express_logo.jpg"
+                  alt="Charminar Express Quick Bites"
+                  width={400}
+                  height={250}
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <h3 className="text-2xl font-bold text-gold mt-4">
                 Charminar Express
               </h3>
               <p className="text-gray-300 mt-2">
-                Quick bites with the same great taste at Charminar Express.
+                Relish quick bites with great taste at Charminar Express.
               </p>
-              <Link
-                href={{
-                  pathname: "/menu",
-                  query: { product: "CharminarExpress" }, // or "CharminarExpress"
-                }}
-                className="mt-6 inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
-              >
-                View Menu
-              </Link>
+              <div className="mt-6">
+                <Link
+                  href={{
+                    pathname: "/menu",
+                    query: { product: "CharminarExpress" },
+                  }}
+                  className="inline-block bg-gold text-black px-4 py-2 rounded-lg shadow-md hover:bg-yellow-500 hover:text-white"
+                >
+                  View Menu
+                </Link>
+              </div>
             </div>
           </div>
         </div>
